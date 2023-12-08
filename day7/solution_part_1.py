@@ -70,9 +70,6 @@ def get_card_value(card):
 card_labels = ["2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"]
 
 def swap_needed(card1, card2):
-    if get_card_value(card1) == None or get_card_value(card2) == None:
-        print(card1)
-        print(card2)
     if get_card_value(card1) > get_card_value(card2):
         return True
     elif get_card_value(card1) == get_card_value(card2): 
