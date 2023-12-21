@@ -42,12 +42,11 @@ for row_index, row in enumerate(grid):
             starting_column = cell_index
 
 
-
+# directions
 dRow = [ -1, 0, 1, 0]
 dCol = [ 0, 1, 0, -1]
  
-# Function to check if a cell
-# is be visited or not
+# check if a cell is a valid neighbour
 def isValid(row, col):
    
     # If cell lies out of bounds
@@ -60,15 +59,13 @@ def isValid(row, col):
     # Otherwise
     return True
 
-# breadth first seach changed to do only 64 steps
+# a variation of breadth first seach changed to do only 64 steps
 def BFS(grid, row, col):
    
-
     parents = queue()
     children = queue()
 
     parents.append(( row, col ))
-
 
     steps = 64
 
@@ -86,7 +83,7 @@ def BFS(grid, row, col):
         y = cell[1]
  
  
-        # Go to the adjacent cells
+        # add valid adjacent cells
         for i in range(4):
             adjx = x + dRow[i]
             adjy = y + dCol[i]
@@ -94,6 +91,7 @@ def BFS(grid, row, col):
             if (isValid(adjx, adjy)):
                 children.append((adjx, adjy))
         
+        # remove duplicated cells
         children = queue(set(list(children)))
 
     # print(parents) & account for the popped child
